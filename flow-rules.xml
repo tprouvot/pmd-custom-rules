@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Custom Apex Rules"
+   xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+   <description>Custom Ruleset to use with PMD</description>
+
+   <include-pattern>.*/flows/.*</include-pattern>
+   <!-- Flow rules -->
+
+   <rule name="ExcessiveFlowLength" language="xml" message="Excessive Flow length."
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      <priority>2</priority>
+      <properties>
+         <property name="version" value="2.0" />
+         <property name="xpath">
+            <value><![CDATA[
+               //document/Flow[pmd:endLine(.) > 2000]
+          ]]></value>
+         </property>
+      </properties>
+   </rule>
+   <rule name="DMLStatementInFlowLoop" language="xml"
+      message="DML Operations shouldn't be done inside of Flow loops"
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      <priority>2</priority>
+      <properties>
+         <property name="version" value="2.0" />
+         <property name="xpath">
+            <value><![CDATA[
+                  //Flow/loops//targetReference[not(ancestor::noMoreValuesConnector)]/text[@Image=//Flow/(recordCreates|recordDeletes|recordUpdates)/name/text/@Image]
+          ]]></value>
+         </property>
+      </properties>
+   </rule>
+   <rule name="MetadataRequiresDescription" language="xml"
+      message="Add a description to explain the Flow"
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      <priority>2</priority>
+      <properties>
+         <property name="version" value="2.0" />
+         <property name="xpath">
+            <value><![CDATA[
+               //document/Flow[not(description)]
+       ]]></value>
+         </property>
+      </properties>
+   </rule>
+   <!-- TODO hardcodedId, Naming Convention, Missing Fault Path, Query In Loop, Unused Variable -->
+   <!-- End Flow rules -->
+</ruleset>
