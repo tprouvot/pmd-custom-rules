@@ -44,3 +44,14 @@ Please install JavaFX on your system and try again` [this](https://github.com/pm
    </rule>
 ```
 ### Custom Fields / Objects
+``` xml
+    <rule name="MetadataRequiresDescription" language="xml" message="Add a description to explain custom metadata" class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <priority>2</priority>
+        <properties>
+            <property name="version" value="2.0"/>
+            <property name="xpath"><value><![CDATA[
+                    //(CustomObject | CustomField)[not(description)]
+            ]]></value></property>
+        </properties>
+    </rule>
+```
