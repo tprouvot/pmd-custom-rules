@@ -45,6 +45,18 @@
          </property>
       </properties>
    </rule>
+   <rule name="FlowDraft" language="xml" message="Flow should be active"
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      <priority>3</priority>
+      <properties>
+         <property name="version" value="2.0"></property>
+         <property name="xpath">
+            <value><![CDATA[
+            //document/Flow/status[text/@Image = 'Draft']
+           ]]> </value>
+         </property>
+      </properties>
+   </rule>
    <!-- TODO hardcodedId, Naming Convention, Missing Fault Path, Query In Loop, Unused Variable -->
    <!-- End Flow rules -->
 </ruleset>
