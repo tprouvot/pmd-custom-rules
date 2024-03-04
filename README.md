@@ -1,57 +1,18 @@
-# This repo contains PMD rules to extends the defaults ones for Salesforce
+# Salesforce DX Project: Next Steps
 
-Inspired by the video [Custom PMD rules for any Metadata within minutes](https://www.londonscalling.net/sessions/custom-pmd-rules-for-any-metadata-within-minutes/) of Robert Sosemann [related repository](https://github.com/rsoesemann/unhappy-soup/)
+Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
 
-## Troubleshooting
-I had some troubles when trying to use the PMD Rule designer to build those rules, if you face the issue `You seem to be missing the JavaFX runtime.
-Please install JavaFX on your system and try again` [this](https://github.com/pmd/pmd/discussions/4153) helped me to solve it.
-## How to use those rules?
+## How Do You Plan to Deploy Your Changes?
 
-### With PMD
-`pmd --minimum-priority 2 -d force-app -R ./custom-ruleset.xml -f text -l apex`
+Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
 
-### With Salesforce Code Analyzer
-[Documentation](https://forcedotcom.github.io/sfdx-scanner/en/v3.x/custom-rules/author/#pmd-custom-rules)
+## Configure Your Salesforce DX Project
 
-## Rules
+The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
 
-### Flow
-``` xml
-   <rule name="MetadataRequiresDescription" language="xml"
-      message="Add a description to explain the Flow"
-      class="net.sourceforge.pmd.lang.rule.XPathRule">
-      <priority>2</priority>
-      <properties>
-         <property name="version" value="2.0" />
-         <property name="xpath">
-            <value><![CDATA[
-               //document/Flow[not(description)]
-       ]]></value>
-         </property>
-      </properties>
-   </rule>
-   <rule name="ExcessiveFlowLength" language="xml" message="Excessive Flow length."
-      class="net.sourceforge.pmd.lang.rule.XPathRule">
-      <priority>2</priority>
-      <properties>
-         <property name="version" value="2.0" />
-         <property name="xpath">
-            <value><![CDATA[
-               //document/Flow[pmd:endLine(.) > 2000]
-          ]]></value>
-         </property>
-      </properties>
-   </rule>
-```
-### Custom Fields / Objects
-``` xml
-    <rule name="MetadataRequiresDescription" language="xml" message="Add a description to explain custom metadata" class="net.sourceforge.pmd.lang.rule.XPathRule">
-        <priority>2</priority>
-        <properties>
-            <property name="version" value="2.0"/>
-            <property name="xpath"><value><![CDATA[
-                    //(CustomObject | CustomField)[not(description)]
-            ]]></value></property>
-        </properties>
-    </rule>
-```
+## Read All About It
+
+- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
+- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
+- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)

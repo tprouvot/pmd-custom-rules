@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Custom Apex Rules"
+   xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+   <description>Custom Ruleset to use with PMD</description>
+
+   <include-pattern>.*/lwc/.*</include-pattern>
+   <!-- LWC rules -->
+
+   <rule name="MetadataRequiresDescription" language="xml"
+      message="Add a description to explain the LWC"
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      <priority>2</priority>
+      <properties>
+         <property name="version" value="2.0" />
+         <property name="xpath">
+            <value><![CDATA[
+               //document/LightningComponentBundle[not(description)]
+       ]]></value>
+         </property>
+      </properties>
+   </rule>
+   <rule name="MetadataRequiresLabel" language="xml"
+      message="Add a proper Label to be listed in AppBuilder list view"
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      <priority>2</priority>
+      <properties>
+         <property name="version" value="2.0" />
+         <property name="xpath">
+            <value><![CDATA[
+            //document/LightningComponentBundle[not(masterLabel)]
+    ]]></value>
+         </property>
+      </properties>
+   </rule>
+   <!-- TODO -->
+   <!-- End LWC rules -->
+</ruleset>
