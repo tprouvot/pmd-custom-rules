@@ -7,21 +7,21 @@
    <include-pattern>.*/lwc/.*</include-pattern>
    <!-- LWC rules -->
 
-   <rule name="MetadataRequiresDescription" language="xml"
-      message="Add a description to explain the LWC"
+   <rule name="LWCRequiresLabelAndDescription" language="xml"
+      message="Add a proper label and description in the LWC meta"
       class="net.sourceforge.pmd.lang.rule.XPathRule">
       <priority>2</priority>
       <properties>
          <property name="version" value="2.0" />
          <property name="xpath">
             <value><![CDATA[
-               //document/LightningComponentBundle[not(description)]
-       ]]></value>
+            //document/LightningComponentBundle[not(masterLabel) or not(description)
+    ]]></value>
          </property>
       </properties>
    </rule>
-   <rule name="MetadataRequiresLabel" language="xml"
-      message="Add a proper Label to be listed in AppBuilder list view"
+   <rule name="DetectDeprecatedConditionalRendering" language="xml"
+      message="The legacy if:true and if:false directives are no longer recommended as we intend to deprecate and remove these directives in the future. We recommend that you replace their usage with the lwc:if|elseif|else conditional directives to future-proof your code"
       class="net.sourceforge.pmd.lang.rule.XPathRule">
       <priority>2</priority>
       <properties>
