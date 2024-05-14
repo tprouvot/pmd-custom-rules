@@ -159,6 +159,6 @@
          </property>
       </properties>
    </rule>
-   <!-- TODO Naming Convention -->
+   <!-- TODO Flow : check for fault paths, too many elements in flow (in addition to flow lenght), Naming Convention -->
    <!-- End Flow rules -->
 </ruleset>
