@@ -55,3 +55,19 @@ Please install JavaFX on your system and try again` [this](https://github.com/pm
         </properties>
     </rule>
 ```
+
+### Global metadata
+``` xml
+      <rule name="BumpApiVersion" language="xml" message="Metadata should use the latest API version."
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      <priority>1</priority>
+      <properties>
+         <property name="version" value="2.0" />
+         <property name="xpath">
+            <value><![CDATA[
+               //apiVersion/text[number(@Image) > 46 and number(@Image) < 48]
+          ]]></value>
+         </property>
+      </properties>
+   </rule>
+```
