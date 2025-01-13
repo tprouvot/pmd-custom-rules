@@ -19,10 +19,9 @@ Please install JavaFX on your system and try again` [this](https://github.com/pm
 ``` xml
    <rule name="MetadataRequiresDescription" language="xml"
       message="Add a description to explain the Flow"
-      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      class="net.sourceforge.pmd.lang.rule.xpath.XPathRule">
       <priority>2</priority>
       <properties>
-         <property name="version" value="2.0" />
          <property name="xpath">
             <value><![CDATA[
                //document/Flow[not(description)]
@@ -31,10 +30,9 @@ Please install JavaFX on your system and try again` [this](https://github.com/pm
       </properties>
    </rule>
    <rule name="ExcessiveFlowLength" language="xml" message="Excessive Flow length."
-      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      class="net.sourceforge.pmd.lang.rule.xpath.XPathRule">
       <priority>2</priority>
       <properties>
-         <property name="version" value="2.0" />
          <property name="xpath">
             <value><![CDATA[
                //document/Flow[pmd:endLine(.) > 2000]
@@ -45,10 +43,9 @@ Please install JavaFX on your system and try again` [this](https://github.com/pm
 ```
 ### Custom Fields / Objects
 ``` xml
-    <rule name="MetadataRequiresDescription" language="xml" message="Add a description to explain custom metadata" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="MetadataRequiresDescription" language="xml" message="Add a description to explain custom metadata" class="net.sourceforge.pmd.lang.rule.xpath.XPathRule">
         <priority>2</priority>
         <properties>
-            <property name="version" value="2.0"/>
             <property name="xpath"><value><![CDATA[
                     //(CustomObject | CustomField)[not(description)]
             ]]></value></property>
@@ -59,13 +56,12 @@ Please install JavaFX on your system and try again` [this](https://github.com/pm
 ### Global metadata
 ``` xml
       <rule name="BumpApiVersion" language="xml" message="Metadata should use the latest API version."
-      class="net.sourceforge.pmd.lang.rule.XPathRule">
+      class="net.sourceforge.pmd.lang.rule.xpath.XPathRule">
       <priority>1</priority>
       <properties>
-         <property name="version" value="2.0" />
          <property name="xpath">
             <value><![CDATA[
-               //apiVersion/text[number(@Image) > 46 and number(@Image) < 48]
+               //apiVersion/text[number(@Text) > 46 and number(@Text) < 48]
           ]]></value>
          </property>
       </properties>
